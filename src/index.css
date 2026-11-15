@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Fraunces", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5.5rem;
+    font-family: var(--font-sans);
+    color: #5b5b6e;
+    background-color: #faf9ff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #2e2e3a;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+  }
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: scale(0);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple-expand 550ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes word-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-word-reveal {
+  opacity: 0;
+  animation: word-reveal 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 7s linear infinite;
+}
+
+@keyframes phone-float {
+  0%,
+  100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-phone-float {
+  animation: phone-float 6s ease-in-out infinite;
+}
+
+@keyframes card-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card-slide-up {
+  animation: card-slide-up 550ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-ripple,
+  .animate-word-reveal,
+  .animate-spin-slow,
+  .animate-phone-float,
+  .animate-card-slide-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #cv-printable-area,
+  #cv-printable-area * {
+    visibility: visible;
+  }
+
+  #cv-printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #ffffff;
+    color: #2e2e3a;
+    box-shadow: none;
+    border: none;
+  }
+}
